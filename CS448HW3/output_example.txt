@@ -1,0 +1,92 @@
+kabi@DESKTOP-H0MHTK5:~$ python3 test.py
+
+CS448 Assignment #3
+20130143 Yihan Kim
+
+1. All-one plaintext and key
+
+    Plaintext: ffffffff ffffffff ffffffff ffffffff
+          Key: ffffffff ffffffff ffffffff ffffffff
+After Round 1: 8b8a8a8a 74757575 8b8a8a8a 74757575
+After Round 2: 88ad4e9c e414f7bd 7752b163 1beb0842
+After Round 3: 6b4ae34a 8f51ea54 65d007a8 d67d7094
+After Round 4: 90dae4ef a36ae745 02801ca1 c48a0879
+After Round 5: 09d77387 006209ce 6f035102 74e17665
+After Round 6: 0abbb851 a27cf8f3 9ea942f2 8ad7cec1
+After Round 7: 434687e8 6f6b0519 88fed2b8 2d864770
+After Round 8: c7429420 1f2d0405 c8792bba 2a18d3c7
+After Round 9: 585389cc b9d2bd0d 08049b84 ad4125ba
+       Result: bcbf217c b280cf30 b2517052 193ab979
+    Recovered: ffffffff ffffffff ffffffff ffffffff
+    PT == REC: True
+
+
+2. Random plaintext and key
+
+    Plaintext: ca1b0349 075edb53 60c8817e 78f70088
+          Key: 54d1e382 732656c6 0a0945ad 1849071c
+After Round 1: 997a96d6 701b73c7 316c6759 13cbdfd6
+After Round 2: 72a244ad 0be71b7a c4f6e2be e283dff3
+After Round 3: 50446c2a 485352dc 239a5bc4 b80add75
+After Round 4: feab0e7a 50bb8168 c5135ec4 c369ae0d
+After Round 5: 12f0454e c9c0886a 89e5f30e e0c4a399
+After Round 6: bd82fcc8 201cdda0 e97ff3f2 c76859f6
+After Round 7: 7e5299d8 95a1d402 f9e89668 4e100025
+After Round 8: 031661d8 49d1115c 060d4506 04d6f460
+After Round 9: 552f4e37 3c6d53ae 7fe5b309 89f7aef0
+       Result: 23a35fdd c21eaf82 feb255c9 d9b622ca
+    Recovered: ca1b0349 075edb53 60c8817e 78f70088
+    PT == REC: True
+
+
+3. 1-bit different plaintext and key
+
+    Plaintext: ca1b0349 075edb53 60c8817e 78f70089
+          Key: 54d1e382 732656c6 0a0945ad 1849071c
+After Round 1: 91728ec6 701b73c7 316c6759 13cbdfd6
+After Round 2: accd2b1c 49a5ddfe 4d76eb37 57ac4569
+After Round 3: c1cdca52 1fb5d874 cadbb58b ed5a19aa
+After Round 4: 3dee8db1 9cf10c00 2190a1e7 008590c3
+After Round 5: 7fbd5639 79f23d5b 5d455b37 de98d8fd
+After Round 6: 5019698d 628290bb 2e61aa27 f76cdd9e
+After Round 7: 4ecfbd1f 576d2463 db3c2051 bf96ff20
+After Round 8: 1d377e85 ef7e0293 b0b283ab 25e802ce
+After Round 9: 65b7aeb4 eae7dd46 4905cfcc 8c92588e
+       Result: 920bb848 aeac2195 17959e77 1a0a0e80
+    Recovered: ca1b0349 075edb53 60c8817e 78f70089
+    PT == REC: True
+
+
+4. Hamming distance between above 2 cases
+
+ROUND1 of case 1: 997a96d6 701b73c7 316c6759 13cbdfd6
+ROUND1 of case 2: 91728ec6 701b73c7 316c6759 13cbdfd6
+Difference btw 1 and 2: 5
+ROUND2 of case 1: 72a244ad 0be71b7a c4f6e2be e283dff3
+ROUND2 of case 2: accd2b1c 49a5ddfe 4d76eb37 57ac4569
+Difference btw 1 and 2: 59
+ROUND3 of case 1: 50446c2a 485352dc 239a5bc4 b80add75
+ROUND3 of case 2: c1cdca52 1fb5d874 cadbb58b ed5a19aa
+Difference btw 1 and 2: 64
+ROUND4 of case 1: feab0e7a 50bb8168 c5135ec4 c369ae0d
+ROUND4 of case 2: 3dee8db1 9cf10c00 2190a1e7 008590c3
+Difference btw 1 and 2: 66
+ROUND5 of case 1: 12f0454e c9c0886a 89e5f30e e0c4a399
+ROUND5 of case 2: 7fbd5639 79f23d5b 5d455b37 de98d8fd
+Difference btw 1 and 2: 63
+ROUND6 of case 1: bd82fcc8 201cdda0 e97ff3f2 c76859f6
+ROUND6 of case 2: 5019698d 628290bb 2e61aa27 f76cdd9e
+Difference btw 1 and 2: 59
+ROUND7 of case 1: 7e5299d8 95a1d402 f9e89668 4e100025
+ROUND7 of case 2: 4ecfbd1f 576d2463 db3c2051 bf96ff20
+Difference btw 1 and 2: 61
+ROUND8 of case 1: 031661d8 49d1115c 060d4506 04d6f460
+ROUND8 of case 2: 1d377e85 ef7e0293 b0b283ab 25e802ce
+Difference btw 1 and 2: 74
+ROUND9 of case 1: 552f4e37 3c6d53ae 7fe5b309 89f7aef0
+ROUND9 of case 2: 65b7aeb4 eae7dd46 4905cfcc 8c92588e
+Difference btw 1 and 2: 61
+Result of case 1: 23a35fdd c21eaf82 feb255c9 d9b622ca
+Result of case 2: 920bb848 aeac2195 17959e77 1a0a0e80
+Difference btw 1 and 2: 68
+kabi@DESKTOP-H0MHTK5:~$
